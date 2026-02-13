@@ -558,3 +558,15 @@ function closeAllReasons() {
 function logout() {
     location.reload();
 }
+
+// FEATURE: Toggle Password Visibility
+function togglePassword() {
+    const input = document.getElementById('password-input');
+    const toggle = document.getElementById('show-toggle');
+    
+    if (toggle.checked) {
+        input.type = "text"; // Show letters
+    } else {
+        input.type = "password"; // Show dots
+    }
+}

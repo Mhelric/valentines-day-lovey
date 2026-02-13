@@ -26,9 +26,14 @@
             <div class="card">
                 <h2>Welcome, Jaira</h2>
                 <p>Enter the password to access my heart.</p>
-                <p>Clue: The Song na pinakanta ko sayo cutie XD</p>
+                
                 <input type="password" id="password-input" placeholder="Secret Word...">
-                <br>
+                
+                <div class="show-pass-wrapper">
+                    <input type="checkbox" id="show-toggle" onclick="togglePassword()">
+                    <label for="show-toggle">Show Password</label>
+                </div>
+
                 <button onclick="attemptLogin()">UNLOCK</button>
                 <p id="error-msg"></p>
             </div>
