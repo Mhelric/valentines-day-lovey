@@ -4,7 +4,7 @@
 const CORRECT_PASSWORD = "Mhel"; 
 const START_DATE = new Date("2025-10-18"); // Your start date
 
-// THE 1000 REASONS DATA
+// THE 274 REASONS DATA
 const loveNotes = [
     "1. I love that we clicked and connected so quick when we first started talking",
     "2. I love that she cares about me",
@@ -279,7 +279,7 @@ const loveNotes = [
     "271. I love her pervy humor LOL",
     "272. I love it when she gets weird",
     "273. I love it when she gets annoyed",
-    "274. I love it when she gets sleepy"
+    "274. I love your whole self, everything about you, every atom & every cell. I love you Jair <3"
 ];
 
 // ======================================================
@@ -359,7 +359,7 @@ function nextSlide(slideNumber) {
         // CASE: ENTERING VIDEO SLIDE
         // Pause background music so she can hear the video
         bgMusic.pause();
-        musicBtn.innerText = "Music: PAUSED (Video)";
+        musicBtn.innerText = "Music: PAUSED";
     } 
     else {
         // CASE: LEAVING VIDEO SLIDE
