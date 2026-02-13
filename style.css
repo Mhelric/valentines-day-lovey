@@ -24,12 +24,23 @@ body {
     font-family: 'Roboto', 'Segoe UI', sans-serif; 
     color: var(--deep-wine);
     text-align: center;
+    transition: background 0.5s ease; /* Smooth transition for final slide */
+}
+
+/* SPECIAL STATE: FULL SCREEN IMAGE FOR FINAL SLIDE */
+body.final-slide-active {
+    background-image: url('art/jai mel.png') !important; 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
 }
 
 .container {
     width: 90%; 
     max-width: 400px;
     position: relative;
+    z-index: 10; /* Ensure content sits above background */
 }
 
 /* Utilities */
@@ -53,7 +64,7 @@ body {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Standard Navigation Buttons (For Intro, Letter, Harana, Final) */
+/* Standard Navigation Buttons */
 .nav-buttons {
     display: flex;
     justify-content: center;
@@ -77,18 +88,16 @@ body {
 /* =========================================
    4. LOGIN CARD & INPUTS
    ========================================= */
-/* Character Image */
 img#mascot {
     width: 60%;
     max-width: 220px;
     height: auto;
-    margin-bottom: -25px; /* Overlaps the card slightly */
+    margin-bottom: -25px; 
     position: relative;
     z-index: 10;
     filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.8));
 }
 
-/* The Main Box */
 .card {
     background: var(--card-bg);
     padding: 35px 20px 30px 20px;
@@ -111,7 +120,6 @@ p {
     opacity: 0.8;
 }
 
-/* Input Fields */
 input {
     width: 80%;
     padding: 15px; 
@@ -131,7 +139,6 @@ input:focus {
     box-shadow: 0 0 8px rgba(213, 0, 109, 0.2);
 }
 
-/* Error Message */
 #error-msg {
     min-height: 20px; 
     font-weight: bold;
@@ -139,7 +146,6 @@ input:focus {
     margin-top: 15px;
 }
 
-/* Golden Yellow Buttons (Default Style) */
 button {
     width: 90%;
     background-color: var(--pop-yellow);
@@ -152,7 +158,7 @@ button {
     font-weight: bold;
     letter-spacing: 1px;
     text-transform: uppercase;
-    box-shadow: 0 5px 0 #C6A700; /* 3D Effect */
+    box-shadow: 0 5px 0 #C6A700;
     cursor: pointer;
     transition: transform 0.1s;
 }
@@ -163,10 +169,8 @@ button:active {
 }
 
 /* =========================================
-   5. SPECIAL FEATURES (Gallery, Letter, List)
+   5. CONTROLS & FEATURES
    ========================================= */
-
-/* --- TOP CONTROLS (Music & Logout) --- */
 #music-control {
     position: fixed;
     top: 15px;
@@ -186,7 +190,7 @@ button:active {
 
 #logout-btn {
     position: fixed;
-    top: 60px; /* Sits below music button */
+    top: 60px;
     left: 15px;
     width: auto;
     margin: 0;
@@ -202,7 +206,6 @@ button:active {
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-/* --- DAYS COUNTER --- */
 #days-counter {
     position: fixed;
     top: 15px;
@@ -226,7 +229,6 @@ button:active {
     color: var(--love-pink);
 }
 
-/* --- PAPER TEXTURE --- */
 .paper-texture {
     background: #fffdf0;
     padding: 15px;
@@ -234,46 +236,24 @@ button:active {
     box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
     transform: rotate(-1deg);
     margin: 20px 0;
+    cursor: pointer;
 }
 .letter-img {
     width: 100%;
     border-radius: 5px;
 }
 
-/* --- GALLERY GRID --- */
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    margin-bottom: 20px;
-}
-.gallery-grid img {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 10px;
-    border: 2px solid white;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-/* =========================================
-   6. LIGHTBOX (Pop-up Image Viewer)
-   ========================================= */
 #lightbox {
     position: fixed;
     top: 0; left: 0;
     width: 100vw; height: 100vh;
-    background: rgba(0,0,0,0.85); /* Dark overlay with blur */
+    background: rgba(0,0,0,0.85);
     backdrop-filter: blur(8px);    
     z-index: 999; 
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: zoom-out;
-}
-
-#lightbox.hidden { 
-    display: none !important; 
 }
 
 #lightbox img {
@@ -286,10 +266,6 @@ button:active {
     transition: transform 0.3s;
 }
 
-/* =========================================
-   7. ANIMATIONS
-   ========================================= */
-/* Shake on Error */
 .shake { animation: shake 0.4s; }
 @keyframes shake {
     0%, 100% { transform: translateX(0); }
@@ -297,7 +273,6 @@ button:active {
     75% { transform: translateX(10px); }
 }
 
-/* Heart Rain */
 .heart {
     position: fixed;
     bottom: -50px; 
@@ -313,13 +288,9 @@ button:active {
     100% { transform: translateY(-110vh) scale(1.5); opacity: 0; }
 }
 
-/* =========================================
-   8. VIDEO STYLES (YouTube/Drive)
-   ========================================= */
 .video-wrapper {
     position: relative;
     width: 100%;
-    /* 16:9 Aspect Ratio */
     padding-bottom: 56.25%; 
     height: 0;
     border-radius: 15px;
@@ -339,20 +310,17 @@ button:active {
 }
 
 /* =========================================
-   9. 1000 REASONS STYLES (Fixed)
+   6. 1000 REASONS STYLES
    ========================================= */
-
-/* The Container: STRICTLY FIXED SIZE */
 #slide-4 {
     height: 80vh; 
     width: 100%;
-    overflow: hidden; /* Cuts off scrolling text */
+    overflow: hidden; 
     position: relative; 
     border-radius: 20px;
     background: rgba(255, 255, 255, 0.2);
 }
 
-/* The Header: Centered & Glassy */
 .reasons-header {
     position: absolute;
     top: 50%; 
@@ -383,7 +351,6 @@ button:active {
     letter-spacing: 2px;
 }
 
-/* The Scrolling Container */
 .scrolling-container {
     display: flex;
     height: 100%;
@@ -393,16 +360,13 @@ button:active {
     box-sizing: border-box; 
 }
 
-/* The Columns */
 .scroll-column {
     flex: 1;
     display: flex;
     flex-direction: column;
     gap: 15px;
-    /* The Animation is set in JS dynamic speed */
 }
 
-/* The Cards */
 .reason-card {
     padding: 15px;
     border-radius: 12px;
@@ -413,13 +377,11 @@ button:active {
     min-height: auto; 
 }
 
-/* Colors */
 .card-yellow { background: #FFF9C4; color: #5D4037; }
 .card-violet { background: #E1BEE7; color: #4A148C; }
 .card-white  { background: #FFFFFF; color: #880E4F; }
 .card-dark   { background: #3E2723; color: #FFECB3; border: 1px solid #5D4037; }
 
-/* Animation Definitions */
 @keyframes scrollUp {
     0% { transform: translateY(0); }
     100% { transform: translateY(-50%); } 
@@ -430,7 +392,6 @@ button:active {
     100% { transform: translateY(0); }
 }
 
-/* --- Floating Nav Buttons (Slide 4) --- */
 .floating-nav-buttons {
     position: fixed;
     bottom: 20px;       
@@ -441,10 +402,9 @@ button:active {
     gap: 15px;
     width: 100%;
     justify-content: center;
-    pointer-events: none; /* Let clicks pass through empty space */
+    pointer-events: none; 
 }
 
-/* Style the buttons inside to be clickable */
 .floating-nav-buttons button {
     pointer-events: auto;
     background: rgba(255, 255, 255, 0.9);
@@ -458,10 +418,8 @@ button:active {
 }
 
 /* =========================================
-   10. READ ALL OVERLAY STYLES
+   7. READ ALL OVERLAY
    ========================================= */
-
-/* The Full Screen Overlay */
 #reasons-overlay {
     position: fixed;
     top: 0; left: 0;
@@ -475,7 +433,6 @@ button:active {
     animation: fadeIn 0.3s ease;
 }
 
-/* The List Container */
 #full-list-container {
     width: 90%;
     height: 85%; 
@@ -488,7 +445,6 @@ button:active {
     z-index: 10; 
 }
 
-/* Individual List Items */
 .list-item {
     padding: 12px;
     border-bottom: 1px dashed #FFC1E3;
@@ -497,7 +453,6 @@ button:active {
     text-align: left;
 }
 
-/* The Close Button */
 .close-overlay-btn {
     position: absolute;
     top: 15px; right: 15px;
@@ -511,7 +466,6 @@ button:active {
     z-index: 20;
 }
 
-/* The Mascot on Bottom Right */
 #overlay-mascot {
     position: absolute;
     bottom: -10px;
@@ -519,10 +473,50 @@ button:active {
     width: 180px; 
     height: auto;
     opacity: 1.0; 
-    
     pointer-events: none; 
     filter: drop-shadow(-5px -5px 10px rgba(0,0,0,0.2)); 
-
-    /* High Z-Index so it sits ON TOP of the list */
     z-index: 30; 
+}
+
+/* =========================================
+   8. SLIDE 5 (FINAL) STYLES
+   ========================================= */
+#slide-5 {
+    /* Layout settings to center the glass box */
+    min-height: 80vh; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    /* Removed border and padding so it floats freely */
+    border: none;
+    padding: 0;
+}
+
+/* The Glass Box Logic */
+.final-glass-box {
+    background: rgba(255, 255, 255, 0.5); /* Slightly more opaque for readability */
+    backdrop-filter: blur(10px); /* Stronger blur */
+    padding: 30px; 
+    border-radius: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.7);
+    text-align: center;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3); 
+    margin-bottom: 20px;
+    max-width: 90%; 
+}
+
+.final-glass-box h1 {
+    font-size: 1.8rem;
+    color: var(--love-pink);
+    text-shadow: 0 2px 4px rgba(255,255,255,0.9);
+    margin-bottom: 15px;
+}
+
+.final-glass-box p {
+    font-weight: 600; /* Bolded for readability */
+    color: var(--deep-wine);
+    margin-bottom: 10px;
+    text-shadow: 0 1px 2px rgba(255,255,255,0.5);
 }

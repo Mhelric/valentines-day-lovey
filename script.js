@@ -1,7 +1,7 @@
 // ======================================================
 // 1. CONFIGURATION
 // ======================================================
-const CORRECT_PASSWORD = "Mhel"; 
+const CORRECT_PASSWORD = "sabaw"; 
 const START_DATE = new Date("2025-10-18"); // Your start date
 
 // THE 274 REASONS DATA
@@ -301,7 +301,7 @@ function attemptLogin() {
         
         // 2. Reveal UI Elements
         document.getElementById('music-control').classList.remove('hidden');
-        document.getElementById('logout-btn').classList.remove('hidden'); // <--- LOGOUT REVEALED HERE
+        document.getElementById('logout-btn').classList.remove('hidden'); 
         document.getElementById('days-counter').classList.remove('hidden');
         updateCounter();
         
@@ -332,7 +332,7 @@ function attemptLogin() {
 }
 
 // ======================================================
-// 3. SLIDE NAVIGATION (Handles YouTube & Music)
+// 3. SLIDE NAVIGATION (Handles YouTube, Music, & Backgrounds)
 // ======================================================
 function nextSlide(slideNumber) {
     // Hide all slides
@@ -350,6 +350,14 @@ function nextSlide(slideNumber) {
         target.classList.add('active');
     }
 
+    // --- FULL SCREEN BACKGROUND LOGIC ---
+    // If we are on slide 5, add the special class to body. Otherwise remove it.
+    if (slideNumber === 5) {
+        document.body.classList.add('final-slide-active');
+    } else {
+        document.body.classList.remove('final-slide-active');
+    }
+
     // --- SMART AUDIO LOGIC ---
     const bgMusic = document.getElementById('bg-music');
     const musicBtn = document.getElementById('music-control');
@@ -357,22 +365,19 @@ function nextSlide(slideNumber) {
 
     if (slideNumber === 3) {
         // CASE: ENTERING VIDEO SLIDE
-        // Pause background music so she can hear the video
         bgMusic.pause();
         musicBtn.innerText = "Music: OFF 🔇";
     } 
     else {
         // CASE: LEAVING VIDEO SLIDE
-        // We need to stop the YouTube video. 
-        // Since we can't easily "pause" an iframe without complex API code,
-        // we simply reset the source URL. This stops the audio instantly.
         if (youtubeFrame) {
             const currentSrc = youtubeFrame.src;
             youtubeFrame.src = currentSrc; 
         }
         
-        // Resume background music (if logged in)
-        if (slideNumber !== 0) {
+        // Resume music if logged in and NOT on slide 5
+        // (Music keeps playing on final slide unless manually stopped)
+        if (slideNumber !== 0 && bgMusic.paused) {
             bgMusic.play();
             musicBtn.innerText = "Music: ON 🎵";
         }
@@ -439,7 +444,6 @@ function populateWall() {
     const duration = (shuffledNotes.length / 2) * speedMultiplier; 
     
     // CRITICAL FIX: Set the entire animation property here
-    // This ensures the browser knows WHAT to animate (scrollUp) and HOW LONG (duration)
     col1.style.animation = `scrollUp ${duration}s linear infinite`;
     col2.style.animation = `scrollDown ${duration + 5}s linear infinite`;
 }
@@ -549,7 +553,7 @@ function closeAllReasons() {
 }
 
 // ======================================================
-// 9. FEATURE: LOGOUT (New)
+// 9. FEATURE: LOGOUT
 // ======================================================
 function logout() {
     location.reload();

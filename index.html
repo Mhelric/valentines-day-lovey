@@ -9,7 +9,7 @@
 <body>
     
     <button id="music-control" class="hidden" onclick="toggleMusic()">Music: ON 🎵</button>
-    <button id="logout-btn" class="hidden" onclick="logout()">Logout</button>
+    <button id="logout-btn" class="hidden" onclick="logout()">Logout 🔒</button>
 
     <div id="days-counter" class="hidden">
         It's been <span id="day-number">0</span> days since we've met!
@@ -65,6 +65,7 @@
             
             <div class="video-wrapper">
                 <iframe 
+                    id="youtube-player"
                     src="https://drive.google.com/file/d/1G7WmmxGANWVdbZS_O-QhGC8U2J-2k-D2/preview" 
                     width="640" 
                     height="480" 
@@ -100,8 +101,9 @@
         </div>
 
         <div id="slide-5" class="slide hidden">
-            <h1>To My Forever 💛</h1>
-            <div class="intro-box">
+            
+            <div class="final-glass-box">
+                <h1>To My Forever 💛</h1>
                 <p>Jaira, thank you for being the most amazing part of my life.</p>
                 <p>I built this little corner of the internet so you can always come back and be reminded of how much you are loved by ME.</p>
                 <p>No matter what happens, I'm always here for you po.</p>
@@ -110,7 +112,7 @@
             
             <div class="nav-buttons">
                 <button class="prev-btn" onclick="nextSlide(4)">⬅ Back</button>
-                <button class="next-btn" onclick="logout()">Home</button>
+                <button class="next-btn" onclick="logout()">HOME</button>
             </div>
         </div>
 
@@ -122,10 +124,7 @@
 
     <div id="reasons-overlay" class="hidden">
         <button class="close-overlay-btn" onclick="closeAllReasons()">✖ Close</button>
-        
-        <div id="full-list-container">
-            </div>
-
+        <div id="full-list-container"></div>
         <img src="art/success.png" id="overlay-mascot" alt="Love Mascot">
     </div>
 
