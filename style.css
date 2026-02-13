@@ -1,0 +1,528 @@
+/* =========================================
+   1. GLOBAL VARIABLES & THEME
+   ========================================= */
+:root {
+    /* THEME: Reddish-Purple, Pink, & Yellow */
+    --deep-wine: #6A0032;     /* Dark Reddish-Purple (Text & Borders) */
+    --love-pink: #D5006D;     /* Vibrant Valentine Pink */
+    --soft-pink: #FFC1E3;     /* Soft Pastel Pink */
+    --pop-yellow: #FFD700;    /* Golden Yellow (Buttons) */
+    --bg-gradient: linear-gradient(135deg, #FF9A9E 0%, #FECFEF 100%); /* Sunset Gradient */
+    --card-bg: #FFF0F5;       /* Lavender Blush (Card Background) */
+}
+
+/* =========================================
+   2. BODY & CONTAINER
+   ========================================= */
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--bg-gradient);
+    font-family: 'Roboto', 'Segoe UI', sans-serif; 
+    color: var(--deep-wine);
+    text-align: center;
+}
+
+.container {
+    width: 90%; 
+    max-width: 400px;
+    position: relative;
+}
+
+/* Utilities */
+.hidden { display: none !important; }
+
+/* =========================================
+   3. SLIDESHOW SYSTEM
+   ========================================= */
+.slide {
+    width: 100%;
+    display: none; 
+    animation: fadeIn 0.5s ease;
+}
+
+.slide.active {
+    display: block; 
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Standard Navigation Buttons (For Intro, Letter, Harana, Final) */
+.nav-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.next-btn, .prev-btn {
+    width: auto;
+    padding: 10px 25px;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.prev-btn {
+    background-color: white;
+    border: 2px solid var(--pop-yellow);
+    box-shadow: none;
+}
+
+/* =========================================
+   4. LOGIN CARD & INPUTS
+   ========================================= */
+/* Character Image */
+img#mascot {
+    width: 60%;
+    max-width: 220px;
+    height: auto;
+    margin-bottom: -25px; /* Overlaps the card slightly */
+    position: relative;
+    z-index: 10;
+    filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.8));
+}
+
+/* The Main Box */
+.card {
+    background: var(--card-bg);
+    padding: 35px 20px 30px 20px;
+    border-radius: 25px;
+    box-shadow: 0 10px 25px rgba(106, 0, 50, 0.2);
+    border: 3px solid var(--soft-pink);
+    border-bottom: 8px solid var(--love-pink);
+    position: relative;
+    z-index: 5;
+}
+
+h2 {
+    margin: 10px 0 5px 0;
+    color: var(--love-pink);
+    font-size: 1.5rem;
+}
+
+p {
+    color: var(--deep-wine);
+    opacity: 0.8;
+}
+
+/* Input Fields */
+input {
+    width: 80%;
+    padding: 15px; 
+    border: 2px solid var(--soft-pink);
+    border-radius: 12px;
+    margin-top: 15px;
+    outline: none;
+    font-size: 18px; 
+    text-align: center;
+    background-color: #ffffff;
+    color: var(--deep-wine);
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+}
+
+input:focus {
+    border-color: var(--love-pink);
+    box-shadow: 0 0 8px rgba(213, 0, 109, 0.2);
+}
+
+/* Error Message */
+#error-msg {
+    min-height: 20px; 
+    font-weight: bold;
+    font-size: 14px;
+    margin-top: 15px;
+}
+
+/* Golden Yellow Buttons (Default Style) */
+button {
+    width: 90%;
+    background-color: var(--pop-yellow);
+    color: var(--deep-wine);
+    border: none;
+    padding: 15px;
+    margin-top: 25px;
+    border-radius: 50px; 
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    box-shadow: 0 5px 0 #C6A700; /* 3D Effect */
+    cursor: pointer;
+    transition: transform 0.1s;
+}
+
+button:active {
+    transform: translateY(5px); 
+    box-shadow: none;
+}
+
+/* =========================================
+   5. SPECIAL FEATURES (Gallery, Letter, List)
+   ========================================= */
+
+/* --- TOP CONTROLS (Music & Logout) --- */
+#music-control {
+    position: fixed;
+    top: 15px;
+    left: 15px; 
+    width: auto; 
+    margin: 0;
+    padding: 8px 12px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid var(--love-pink);
+    color: var(--love-pink);
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 10px;
+    z-index: 200;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+#logout-btn {
+    position: fixed;
+    top: 60px; /* Sits below music button */
+    left: 15px;
+    width: auto;
+    margin: 0;
+    padding: 8px 12px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid var(--deep-wine); 
+    color: var(--deep-wine);
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 10px;
+    z-index: 200;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* --- DAYS COUNTER --- */
+#days-counter {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 8px 12px;
+    border-radius: 10px;
+    border: 2px solid var(--love-pink);
+    color: var(--deep-wine);
+    font-size: 12px;
+    font-weight: bold;
+    z-index: 200;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    max-width: 150px; 
+    line-height: 1.2;
+    text-align: center;
+}
+
+#day-number {
+    font-size: 18px;
+    color: var(--love-pink);
+}
+
+/* --- PAPER TEXTURE --- */
+.paper-texture {
+    background: #fffdf0;
+    padding: 15px;
+    border: 1px solid #d4c5b0;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    transform: rotate(-1deg);
+    margin: 20px 0;
+}
+.letter-img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+/* --- GALLERY GRID --- */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+}
+.gallery-grid img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 2px solid white;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* =========================================
+   6. LIGHTBOX (Pop-up Image Viewer)
+   ========================================= */
+#lightbox {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(0,0,0,0.85); /* Dark overlay with blur */
+    backdrop-filter: blur(8px);    
+    z-index: 999; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: zoom-out;
+}
+
+#lightbox.hidden { 
+    display: none !important; 
+}
+
+#lightbox img {
+    max-width: 95%;
+    max-height: 90%;
+    border: 2px solid white;
+    border-radius: 5px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    transform: scale(1);
+    transition: transform 0.3s;
+}
+
+/* =========================================
+   7. ANIMATIONS
+   ========================================= */
+/* Shake on Error */
+.shake { animation: shake 0.4s; }
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+}
+
+/* Heart Rain */
+.heart {
+    position: fixed;
+    bottom: -50px; 
+    font-size: 24px; 
+    animation: floatUp 3s linear forwards; 
+    z-index: 100; 
+    pointer-events: none; 
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(0) scale(1); opacity: 1; }
+    50% { opacity: 1; }
+    100% { transform: translateY(-110vh) scale(1.5); opacity: 0; }
+}
+
+/* =========================================
+   8. VIDEO STYLES (YouTube/Drive)
+   ========================================= */
+.video-wrapper {
+    position: relative;
+    width: 100%;
+    /* 16:9 Aspect Ratio */
+    padding-bottom: 56.25%; 
+    height: 0;
+    border-radius: 15px;
+    overflow: hidden;
+    border: 3px solid var(--love-pink);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    margin-bottom: 15px;
+    background: black;
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* =========================================
+   9. 1000 REASONS STYLES (Fixed)
+   ========================================= */
+
+/* The Container: STRICTLY FIXED SIZE */
+#slide-4 {
+    height: 80vh; 
+    width: 100%;
+    overflow: hidden; /* Cuts off scrolling text */
+    position: relative; 
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* The Header: Centered & Glassy */
+.reasons-header {
+    position: absolute;
+    top: 50%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.4); 
+    backdrop-filter: blur(5px);
+    padding: 20px 40px; 
+    border-radius: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.5); 
+    z-index: 50; 
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
+}
+
+.reasons-header:active {
+    transform: translate(-50%, -50%) scale(0.95);
+    background: rgba(255, 255, 255, 0.6);
+}
+
+.reasons-header h2 {
+    margin: 0 0 10px 0;
+    font-size: 1.5rem;
+    color: var(--deep-wine);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* The Scrolling Container */
+.scrolling-container {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    gap: 15px;
+    padding: 10px;
+    box-sizing: border-box; 
+}
+
+/* The Columns */
+.scroll-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    /* The Animation is set in JS dynamic speed */
+}
+
+/* The Cards */
+.reason-card {
+    padding: 15px;
+    border-radius: 12px;
+    font-size: 13px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    font-weight: 500;
+    text-align: left;
+    min-height: auto; 
+}
+
+/* Colors */
+.card-yellow { background: #FFF9C4; color: #5D4037; }
+.card-violet { background: #E1BEE7; color: #4A148C; }
+.card-white  { background: #FFFFFF; color: #880E4F; }
+.card-dark   { background: #3E2723; color: #FFECB3; border: 1px solid #5D4037; }
+
+/* Animation Definitions */
+@keyframes scrollUp {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-50%); } 
+}
+
+@keyframes scrollDown {
+    0% { transform: translateY(-50%); } 
+    100% { transform: translateY(0); }
+}
+
+/* --- Floating Nav Buttons (Slide 4) --- */
+.floating-nav-buttons {
+    position: fixed;
+    bottom: 20px;       
+    left: 50%;
+    transform: translateX(-50%); 
+    z-index: 100;     
+    display: flex;
+    gap: 15px;
+    width: 100%;
+    justify-content: center;
+    pointer-events: none; /* Let clicks pass through empty space */
+}
+
+/* Style the buttons inside to be clickable */
+.floating-nav-buttons button {
+    pointer-events: auto;
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid var(--love-pink);
+    color: var(--love-pink);
+    margin: 0;
+    padding: 10px 20px;
+    font-size: 14px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    width: auto;
+}
+
+/* =========================================
+   10. READ ALL OVERLAY STYLES
+   ========================================= */
+
+/* The Full Screen Overlay */
+#reasons-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: #FFF0F5; 
+    z-index: 9999; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 60px; 
+    animation: fadeIn 0.3s ease;
+}
+
+/* The List Container */
+#full-list-container {
+    width: 90%;
+    height: 85%; 
+    overflow-y: auto; 
+    background: white;
+    border-radius: 15px;
+    border: 2px solid var(--soft-pink);
+    padding: 10px;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+    z-index: 10; 
+}
+
+/* Individual List Items */
+.list-item {
+    padding: 12px;
+    border-bottom: 1px dashed #FFC1E3;
+    font-size: 14px;
+    color: var(--deep-wine);
+    text-align: left;
+}
+
+/* The Close Button */
+.close-overlay-btn {
+    position: absolute;
+    top: 15px; right: 15px;
+    width: auto;
+    margin: 0;
+    padding: 8px 15px;
+    font-size: 14px;
+    background: var(--love-pink);
+    color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 20;
+}
+
+/* The Mascot on Bottom Right */
+#overlay-mascot {
+    position: absolute;
+    bottom: -10px;
+    right: -20px;
+    width: 180px; 
+    height: auto;
+    opacity: 1.0; 
+    
+    pointer-events: none; 
+    filter: drop-shadow(-5px -5px 10px rgba(0,0,0,0.2)); 
+
+    /* High Z-Index so it sits ON TOP of the list */
+    z-index: 30; 
+}

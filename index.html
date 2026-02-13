@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Mhel & Jai</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <button id="music-control" class="hidden" onclick="toggleMusic()">Music: ON 🎵</button>
+    <button id="logout-btn" class="hidden" onclick="logout()">Logout 🔒</button>
+
+    <div id="days-counter" class="hidden">
+        It's been <span id="day-number">0</span> days since we've met!
+    </div>
+
+    <audio id="bg-music" loop>
+        <source src="art/song.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="container">
+        
+        <div id="slide-login" class="slide active">
+            <img id="mascot" src="art/idle.png" alt="Character">
+            <div class="card">
+                <h2>Welcome, Jaira</h2>
+                <p>Enter the password to access my heart.</p>
+                <input type="password" id="password-input" placeholder="Secret Word...">
+                <br>
+                <button onclick="attemptLogin()">UNLOCK</button>
+                <p id="error-msg"></p>
+            </div>
+        </div>
+
+        <div id="slide-1" class="slide hidden">
+            <h1>Welcome Loveyyy <3</h1>
+            <div class="intro-box">
+                <p>Happy Valentines day!</p> 
+                <p>Surprise! hehe</p>
+                <p>I've made this small website just for you po :></p>
+                <p>I hope that it can make you happy today! Luv youuu!</p>
+            </div>
+            <div class="nav-buttons">
+                <button class="next-btn" onclick="nextSlide(2)">Next ➡</button>
+            </div>
+        </div>
+
+        <div id="slide-2" class="slide hidden">
+            <h3>My Love Letter</h3>
+            <p style="font-size:12px; opacity:0.7;">(Tap the letter to read)</p>
+            
+            <div class="paper-texture" onclick="openFull(this.querySelector('img'))">
+                <img src="art/love letter.jpg" alt="Handwritten Letter" class="letter-img">
+            </div>
+            
+            <div class="nav-buttons">
+                <button class="prev-btn" onclick="nextSlide(1)">⬅ Back</button>
+                <button class="next-btn" onclick="nextSlide(3)">Next ➡</button>
+            </div>
+        </div>
+
+        <div id="slide-3" class="slide hidden">
+            <h3>Harana For You</h3>
+            
+            <div class="video-wrapper">
+                <iframe 
+                    src="https://drive.google.com/file/d/1G7WmmxGANWVdbZS_O-QhGC8U2J-2k-D2/preview" 
+                    width="640" 
+                    height="480" 
+                    allow="autoplay">
+                </iframe>
+            </div>
+            
+            <p>Just a little song for my favorite person.</p>
+            
+            <div class="nav-buttons">
+                <button class="prev-btn" onclick="nextSlide(2)">⬅ Back</button>
+                <button class="next-btn" onclick="nextSlide(4)">Next ➡</button>
+            </div>
+        </div>
+
+        <div id="slide-4" class="slide hidden">
+    
+            <div class="reasons-header" onclick="openAllReasons()">
+                <h2>1000 Reasons</h2>
+                <p style="font-size: 12px; margin: 5px 0 0 0; opacity: 0.8;">(Tap to Read All 📜)</p>
+            </div>
+
+            <div class="scrolling-container">
+                <div class="scroll-column" id="col-1"></div>
+                <div class="scroll-column reverse" id="col-2"></div>
+            </div>
+
+            <div class="floating-nav-buttons">
+                <button class="prev-btn" onclick="nextSlide(3)">⬅ Back</button>
+                <button class="next-btn" onclick="nextSlide(5)">Next ➡</button>
+            </div>
+
+        </div>
+
+        <div id="slide-5" class="slide hidden">
+            <h1>To My Forever 💛</h1>
+            <div class="intro-box">
+                <p>Jaira, thank you for being the most amazing part of my life.</p>
+                <p>I built this little corner of the internet so you can always come back and be reminded of how much you are loved.</p>
+                <p>No matter what happens, I'm always here for you.</p>
+                <p><strong>Happy Valentine's Day, Mahal!</strong></p>
+            </div>
+            
+            <div class="nav-buttons">
+                <button class="prev-btn" onclick="nextSlide(4)">⬅ Back</button>
+                <button class="next-btn" onclick="logout()">Home</button>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="lightbox" class="hidden" onclick="closeLightbox()">
+        <img id="lightbox-img" src="">
+    </div>
+
+    <div id="reasons-overlay" class="hidden">
+        <button class="close-overlay-btn" onclick="closeAllReasons()">✖ Close</button>
+        
+        <div id="full-list-container">
+            </div>
+
+        <img src="art/success.png" id="overlay-mascot" alt="Love Mascot">
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
