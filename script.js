@@ -4,7 +4,7 @@
 const CORRECT_PASSWORD = "Mhel"; 
 const START_DATE = new Date("2025-10-18"); // Your start date
 
-// THE 1000 REASONS DATA (Full 274 Items)
+// THE 1000 REASONS DATA
 const loveNotes = [
     "1. I love that we clicked and connected so quick when we first started talking",
     "2. I love that she cares about me",
