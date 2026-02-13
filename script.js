@@ -279,7 +279,7 @@ const loveNotes = [
     "271. I love her pervy humor LOL",
     "272. I love it when she gets weird",
     "273. I love it when she gets annoyed",
-    "274. I love your whole self, everything about you, every atom & every cell. I love you Jair <3"
+    "274. I love your whole self, everything about you, every atom & every cell. I love you Jaira <3"
 ];
 
 // ======================================================
