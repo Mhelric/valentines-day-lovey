@@ -359,7 +359,7 @@ function nextSlide(slideNumber) {
         // CASE: ENTERING VIDEO SLIDE
         // Pause background music so she can hear the video
         bgMusic.pause();
-        musicBtn.innerText = "Music: PAUSED";
+        musicBtn.innerText = "Music: OFF 🔇";
     } 
     else {
         // CASE: LEAVING VIDEO SLIDE
